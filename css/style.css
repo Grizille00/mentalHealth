@@ -853,10 +853,30 @@ img {
     font-size: 18px;
   }
 }
+.my-footer .my-img {
+  display: none;
+}
 @media (min-width: 576px) {
   .my-footer {
     padding: 80px 40px;
     text-align: left;
+    position: relative;
+  }
+  .my-footer .my-img {
+    display: block;
+    position: absolute;
+  }
+  .my-footer .my-img.top-left {
+    top: 5%;
+    left: 5%;
+  }
+  .my-footer .my-img.top-right {
+    top: 5%;
+    right: 5%;
+  }
+  .my-footer .my-img.btm-left {
+    bottom: 5%;
+    left: 5%;
   }
   .my-footer h2 {
     text-align: center;
