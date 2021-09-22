@@ -1,0 +1,269 @@
+
+
+mixin tab_control(img,txt,name)
+    button.menu-btn(id=`${name}-btn`) 
+        i.bi(class=`bi-${img}`)
+        span=txt
+        i.right-arrow.bi.bi-chevron-right
+
+mixin tab(vals,name)
+    .tab(class=`${name}-tab`)
+        p 
+            span=vals[0]
+            a.my-btn=vals[1]
+
+
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Mental Health
+        link(rel="stylesheet", href="./fonts/stylesheet.css")
+        link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
+        link(rel="stylesheet", href="./css/slick.css")
+        link(rel="stylesheet", href="./css/slick-theme.css")
+        link(rel="stylesheet", href="./bsi/bootstrap-icons.css")
+        link(rel="stylesheet", href="./css/bootstrap.min.css")
+        link(rel="stylesheet", href="./css/style.css")
+    body 
+        //- Header Section
+        header.my-header 
+            img.logo(src="./img/MAIN-LOGO-CMYK-transparent-background-copy.png", alt="")
+            .hamburger
+                span 
+                span 
+                span 
+            nav.my-nav
+                a(href="#") About Us 
+                a(href="#") Services
+                a(href="#") Resources
+                a(href="#") Get Involved
+        //- Header End
+
+        //- Banner Section
+        section.banner 
+            .banner-inner 
+                h1. 
+                    We care for 
+                    your mental 
+                    well being
+                p. 
+                    We ensure you have the best knowledge,
+                    help and resources for good mental health
+
+                a(href="#") Discover More
+            
+            img.img-fluid(src="./img/pexels-anna-tarazevich-6173716.png", alt="")
+        //- Banner End
+
+
+        //- About Section
+        section.about
+            img.img-fluid(src="./img/abt.png", alt="") 
+            .about-inner 
+                h2 About Mental Health SF
+                p. 
+                    We fight stigma and discrimination in mental health 
+                    across diverse communities and changed policy, 
+                    perception, and people. As mental health continues
+                    to change, we aim to be at the forefront of the 
+                    evolution.
+                a.my-btn Read More
+
+
+        //- About End
+
+        //- Services Section
+        section.services 
+            h2 Education With MHASF
+
+            .services-inner
+                .tab-controls.center
+                    +tab_control("trophy-fill", "Training Institute", "trophy")
+                    +tab_control("emoji-smile-fill", "PROPEL", "propel")
+                    +tab_control("currency-dollar", "TAMHS Project", "tamhs")
+                .tab-controls1
+                    +tab_control("trophy-fill", "Training Institute", "trophy")
+                    +tab_control("emoji-smile-fill", "PROPEL", "propel")
+                    +tab_control("currency-dollar", "TAMHS Project", "tamhs")
+                
+                hr
+                .tab-content 
+                    +tab(
+                        [
+                            "MHASF's Training Institute provides evidence-based trainings designed to enhance skills and knowledge for professional development within a cooperative learning environment. We deliver engaging, interactive trainings and workshops discussing an array of mental health topics for people of any profession and level of familiarity.",
+                            "View Programs"
+                        ],
+                         "trophy"
+                    )
+
+                    +tab(
+                        [
+                            "MHASF's Training Institute provides evidence-based trainings designed to enhance skills and knowledge for professional development within a cooperative learning environment. We deliver engaging, interactive trainings and workshops discussing an array of mental health topics for people of any profession and level of familiarity.",
+                            "View Propel"
+                        ],
+                        "propel"
+                    )
+
+                    +tab(
+                        [
+                            "MHASF's Training Institute provides evidence-based trainings designed to enhance skills and knowledge for professional development within a cooperative learning environment. We deliver engaging, interactive trainings and workshops discussing an array of mental health topics for people of any profession and level of familiarity.",
+                            "View Project"
+                        ],
+                        "tamhs"
+                    )
+                img.risk(src="./img/serv.png", alt="")
+
+        //- Services End
+
+        //- Contact Section
+        section.contact 
+            .contact-inner 
+                h2 Our Warm Line
+                p. 
+                    We have a set of resources that help you in any
+                    matter regarding mental health. If you need to 
+                    speak to someone we also have people on the 
+                    line ready to be of help in your time of need
+                a.my-btn(href="#") View Resources & Contacts 
+            img.img-fluid(src="./img/a4.png", alt="")
+        //- Contact End
+
+        //- Reachout Section
+        section.reachout 
+            .container.deep 
+                .reachout-inner 
+                    img.img-fluid(src="./img/pexels-anna-shvets-4167544.png", alt="")
+                    .content 
+                        h2. 
+                            WE ARE AVAILABLE 24/7 
+                            FOR COVID-19 SUPPORT
+
+                        p. 
+                            MHASF is here for you. 
+                            Our combined efforts of self-quarantining will save 
+                            lives. While physical social distancing is recommended, 
+                            it does not mean we need to distance ourselves from
+                            one another emotionally and mentally. During this
+                            difficult period, we want to help and support by doing
+                            what we do best: peer-to-peer support, mental health
+                            information/referrals, and holistic wellness strategies.
+
+                        a.my-btn Covid-19 Resources & Contacts
+        //- Reachout End
+
+        //- Gallery Section
+        section.gallery 
+            .row.gx-3.gy-3
+                .col-lg-3.col-md-6
+                    .context.first    
+                        img.mee.img-fluid(src="./img/pexels-gabby-k-5384618.png", alt="")
+                        img.img-fluid(src="./img/pexels-karolina-grabowska-4386153.png", alt="")
+                .col-lg-6.col-md-12
+                    .context.mid 
+                         img(src="./img/pexels-anna-shvets-4557876.png", alt="")
+                         .overlay
+                            h2 Fundraising
+                            p. 
+                                Corporate Donations, Peer to Peer Donations
+                                & GoFundMe Campaigns constitute
+                                the largest fraction of our fundraising. 
+                                Just to show our gratitude, here are the 
+                                largest donors from each of the groups 
+                            a.my-btn(href="#") View Donor Shoutouts
+                .col-lg-3.col-md-12
+                    .context.last 
+                        img(src="./img/pexels-rfstudio-3059892.png", alt="")
+        //- Gallery End
+
+
+        //- Team Section
+        section.team
+            .team-top 
+                .left 
+                    h3 Join Our Team
+                    p. 
+                        Become a member of MHASF and help
+                        lead the frontier to advocate for better
+                        innovation in mental health care
+                    a.my-btn(href="#") Register To Advocate
+                    img.sss(src="./img/128-1286885_person-talking-lineart-people-talking-to-each-other.png", alt="")
+
+                .right 
+                    h3  Speak Up
+                    p. 
+                        Tell your story, serve as someone's
+                        beacon of hope in their time of need
+                    a.my-btn(href="#") Register To Be A Speaker
+
+            .team-bottom 
+                .docker
+                    h3 Advocate
+                    p. 
+                        Help spread the word about the
+                        need for better mental health 
+                        care and attention.
+                    a.my-btn(href="#") Register To Advocate
+
+                img.img-fluid(src="./img/pexels-helena-lopes-697243.png", alt="")
+
+                .docker.right-dock 
+                    h3 Volunteer
+                    p. 
+                        Volunteer to help MHASF in any 
+                        event and stuff to do with some
+                        volunteering goes here
+                    a.my-btn(href="#") Register To Volunteer
+
+        //- Team End
+
+        //- Footer S3cttion 
+        footer.my-footer 
+            h2 Sign Up For Our Newsletter
+            form.my-form(action="")
+                input(type="email" placeholder="your email here") 
+                button.my-btn(type="submit") Sign Up
+            .items.row
+                .col-lg-4.col-md-6  
+                    ul
+                        h4 Support
+                        li 
+                            span 24/7 Warm Line: 
+                        li 
+                            span 855-845-7415
+                
+                .col-lg-4.col-md-6
+                    ul
+                        h4 Quick Links
+                        li 
+                            a(href="#")  
+                                span about us
+                        li 
+                            a(href="#")  
+                                span services
+                        li
+                            a(href="#") 
+                                span careers
+
+
+                .col-lg-4.col-md-12
+                    ul
+                        h4 Contact Info
+                        li 
+                            span 870 Market Street, Suite 928
+                        li 
+                            span San Francisco, CA 94102
+                        li 
+                            span 415-421-2926
+                        li 
+                            span info@mentalhealthsf.org
+        //- Footer ENd
+
+
+        script(src="./js/jquery-2.2.0.min.js") 
+        script(src="./js/slick.min.js") 
+        script(src="./js/bootstrap.bundle.min.js") 
+        script(src="./js/main.js") 

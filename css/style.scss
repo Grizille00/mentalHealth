@@ -1,0 +1,1035 @@
+// Colors
+
+$color-green:#0493A3;
+$color-blue:#27226B;
+$color-white:#fff;
+$color-gray:#AFAFB1;
+
+// Fonts
+
+$text-regular:'Gilroy-Regular';
+$text-medium:'Gilroy-Medium';
+$text-bold:'Gilroy-Bold';
+$text-light: 'Gilroy-Light';
+$text-semiBold:'Gilroy-SemiBold';
+$text-ExtraBold:'Gilroy-ExtraBold';
+
+// Mixins
+
+@mixin text($font, $color, $sm, $md, $lg) {
+    font-family: $font;
+    color: $color;
+    font-size: $sm;
+    @media (min-width: 576px) {
+        font-size: $lg;
+    }
+    @media (min-width:576px) and (max-width:768px) {
+        font-size: $md;
+    }
+}
+
+
+@mixin myBtn($col){
+    padding: $space-sm/2 $space-sm ;
+    color: $color-white;
+    background-color: $col;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+
+
+@mixin ham {
+    height: $ham-sm;
+    width: $ham-sm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    span{
+        width: 100%;
+        height: .5rem /* 8/16 */;
+        background-color: $color-green;
+        display: block;
+        border-radius: .3125rem /* 5/16 */;
+        transition: $speed ease;
+        position: relative;
+        opacity: 1;
+        top: 0;
+    }
+    &.open{
+        span{
+            &:nth-child(2){
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            &:nth-child(1){
+                top: 30%;
+                transform: rotateZ(-45deg);
+                
+            }
+            &:nth-child(3){
+                transform: rotateZ(45deg);
+                top: -25%;
+            }
+        }
+    }
+
+
+    @media (min-width:992px) {
+        display: none;
+    }
+}
+
+
+// Spacing
+
+$space-sm:20px;
+$space-md:35px;
+$space-lg:40px;
+$speed:400ms;
+$ham-sm:50px;
+$ham-lg:60px;
+
+
+
+// Typography
+
+h1{
+
+    @include text(
+        $text-regular,
+        $color-white,
+        25px,
+        40px,
+        73px
+    );
+}
+
+h2{
+    @include text(
+        $text-ExtraBold,
+        $color-green, 
+        22px, 
+        32px,
+        45px);
+}
+
+p,span{
+    @include text(
+        $text-medium, 
+        $color-blue, 
+        14px, 
+        17px,
+        23px );
+}
+
+a{
+    @include text(
+        $text-light, 
+        $color-white, 
+        14px, 
+        17px,
+        23px );
+    text-decoration: none;
+    opacity: .9;
+    &:hover{
+        color: $color-white;
+        opacity: 1;
+    }
+}
+
+img{
+    object-fit: contain;
+}
+
+
+// Header Section
+.my-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    position: absolute;
+    width: 100%;
+    padding: $space-sm;
+    z-index: 2;
+
+    .logo{
+        width: 35%;
+    }
+
+    .my-nav{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background-color: $color-blue;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: $speed ease-in $speed/2;
+        visibility: hidden;
+        opacity: 0;
+        &.open{
+            visibility: visible;
+            opacity: 1;
+            a{
+                margin-top: $space-sm;
+                font-size: 35px;
+            }
+        }
+
+        
+    }
+
+    .hamburger{
+        position: relative;
+        z-index: 2;
+        @include ham();
+    }
+
+    @media (min-width:992px) {
+        padding: $space-lg;
+        .logo{
+            width: 15%;
+        }
+
+        .my-nav{
+            width: 40%;
+            flex-direction: row;
+            background-color: transparent;
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+            position: relative;
+            justify-content: space-evenly;
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        .logo{
+            width: 20%;
+        }
+    }
+
+}
+
+
+// Header End
+
+
+// banner Section
+
+.banner{
+    background: url('../img/banner-bg.png') no-repeat;
+    background-position: top;
+    background-size: contain;
+    background-color: $color-green;
+    height: 90vh;
+    position: relative;
+    top: -2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: $space-sm;
+
+    .banner-inner{
+        margin-top: $space-sm*6;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img{
+        margin-top: $space-sm;
+    }
+
+    a{
+        @include myBtn($color-blue);
+    }
+    h2,p{
+        margin-bottom: $space-sm*2;
+    }
+
+
+    @media (min-width:576px) {
+        top: -8vh;
+        height: 102vh;
+        text-align: left;
+        background-color: transparent;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: -20vh;
+        a{
+            background-color: $color-green;
+        }
+        img{
+            width: 60%;
+            margin-top: $space-lg*4.5;
+        }
+        .banner-inner{
+            padding: $space-lg;
+            margin-top: $space-lg*6.2;
+            align-self: flex-start;
+            width: 38%;
+            height: 60%;
+        }
+        h1{
+            margin-bottom: $space-lg*2;
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        background-color: $color-green;
+        text-align: center;
+        height: 65vh;
+        justify-content: center;
+        margin-bottom: 0;
+
+        a{
+            background-color: $color-blue;
+        }
+        // flex-direction: column;
+
+        .banner-inner{
+
+            margin:$space-md*4  0 0;
+            width: 100%;
+            height: auto;
+        }
+        h1{
+            margin-bottom: $space-md;
+        }
+        img{
+            margin-top: 0;
+            width: 60%;
+        }
+    }
+
+}
+
+// Banner End
+
+
+// About Section
+
+.about{
+    background: url('../img/Path 2.png') no-repeat;
+    background-position: top;
+    background-size: contain;
+    padding: $space-sm*5 $space-sm $space-sm;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+
+    a{
+        @include myBtn($color-blue);
+        color: $color-white;
+    }
+
+    img{
+        margin-top: $space-sm*3;
+    }
+
+
+    @media (min-width:576px) {
+        padding: $space-lg*5 $space-lg $space-lg;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        justify-content: space-between;
+        h2,p{
+            margin-bottom: $space-lg/2;
+        }
+        img{
+            width: 45%;
+        }
+        .about-inner{
+            width: 50%;
+            margin-top: $space-lg*2;
+        }
+    }
+
+    @media (min-width:576px) and (max-width:768px) {
+        padding: $space-md*5 $space-md*2 $space-md;
+        text-align: center;
+        flex-direction: column-reverse;
+        img{
+            width: 60%;
+        }
+        .about-inner{
+            width: 100%;
+        }
+    }
+}
+
+// About End
+
+
+// Services Section
+
+.services{
+    background: url('../img/Path 4.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    padding: $space-sm*4 $space-sm $space-sm;
+
+    .risk{
+        display: none;
+        position: absolute;
+        right:-10%;
+        bottom: 0;
+    }
+
+    .menu-btn{
+        background: transparent;
+        border: none;
+        outline: none;
+        transform: $speed ease;
+        display: flex;
+        justify-content: space-between;
+        color: $color-gray;
+        span,i{
+            @include text(
+                $text-medium, 
+                $color-gray, 
+                16px, 
+                17px,
+                28px );
+        }
+        &.active-btn{
+            span,i{
+                color: $color-green; 
+            }
+        }
+    }
+
+
+    .tab-controls{
+        padding: $space-sm;
+
+    }
+
+    .tab-controls1{
+        display: none;
+    }
+
+
+    .menu-btn{
+        padding: $space-sm/2 $space-sm;
+        
+
+    }
+
+
+
+
+    .tab{
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
+        transition: $speed linear ease-in;
+        p{
+            display: flex;
+            flex-direction: column;
+        }
+
+        a{
+            background-color: $color-blue;
+            padding: $space-sm/2 $space-sm;
+            width: fit-content;
+            margin:$space-sm/2 auto;
+
+        }
+
+        &.active-tab{
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    hr{
+        width: 100%;
+        height: 4px;
+        color: $color-blue;
+        opacity: 1;
+        margin-bottom: $space-sm*2;
+    }
+
+
+    @media (min-width:576px) {
+        text-align: left;
+        padding: 15% $space-lg;
+        overflow: hidden;
+
+        .risk{
+            display: block;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: $space-lg*2;
+        }
+        .services-inner{
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .tab-controls{
+            display: none;
+        }
+
+        .tab-controls1{
+            display: flex;
+            padding-top: $space-lg;
+            flex-direction: column;
+            // justify-content: space-between;
+            width: 25%;
+            button{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                margin-bottom: $space-lg;
+                span{
+                    margin-left: $space-lg/2;
+                }
+                .right-arrow{
+                    margin-left: auto;
+                }
+            }
+        }
+        .tab-content{
+            width: 65%;
+            padding: $space-lg $space-lg/4;
+
+            a{
+                margin: 0;
+                margin-top: $space-lg;
+            }
+        }
+        hr{
+            width: 4px;
+            height: auto;
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        .tab-controls1{
+            width: 35%;
+        }
+        .tab-content{
+            width: 60%;
+        }
+
+        .risk{
+            width: 40%;
+            right: -20%;
+        }
+    }
+
+}
+
+// Services End
+
+// Contact Section
+
+.contact{
+    padding: $space-sm*3 $space-sm;
+    text-align: center;
+
+    a{
+        @include myBtn($color-blue);
+    }
+
+    h2,p,a{
+        margin-bottom: $space-sm;
+    }
+    img{
+        margin-top: $space-sm*2;
+    }
+
+
+    @media (min-width:576px) {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: $space-lg*4 $space-lg*2;
+
+        .contact-inner{
+            width: 45%;
+        }
+
+
+        h2,p,a{
+            // margin-bottom: $space-lg;
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        flex-direction: column;
+        padding: $space-md*2 $space-md;
+        text-align: center;
+        .contact-inner{
+            width: 100%;
+        }
+
+
+        h2,p,a{
+            margin-bottom: $space-md;
+        }
+
+        img{
+            margin-top: $space-md*2;
+            width: 59%;
+        }
+    }
+}
+// Contact End
+
+
+// Reachout Section
+
+.reachout{
+    background: url('../img/Ellipse 13.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: $space-sm*5 0;
+
+    
+
+    .reachout-inner{
+        background-color: $color-blue;
+        width: 100%;
+        padding: $space-sm*2 $space-sm/2;
+
+        a{
+            @include myBtn(transparent);
+            border: 1px solid $color-white;
+        }
+        
+
+        h2,p,a{
+            color: $color-white;
+            margin-top: $ham-sm;
+        }
+    }
+
+    @media (max-width:576px) {
+        .deep{
+            padding: 0;
+        }
+    }
+
+
+    @media (min-width:576px) {
+        background-size: contain;
+        text-align: left;
+        padding: $space-lg*2 $space-lg;
+
+        .reachout-inner{
+            padding: $space-lg;
+            display: flex;
+            justify-content: space-between;
+            .content,img{
+                width: 48%;
+            }
+
+            .content{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            h2,p,a{
+                margin: 0;
+            }
+            a{
+                width: fit-content;
+            }
+        }
+
+        
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        text-align: center;
+        .reachout-inner{
+            flex-direction: column;
+            .content{
+                align-items: center;
+            }
+            img{
+                height: 25%;
+            }
+
+            h2,p,a{
+                margin-top: $space-md;
+            }
+
+            .content,img{
+                width: 100%;
+            }
+
+        }
+
+        
+    }
+}
+
+// Reachout End
+
+
+
+
+// Gallery Section
+
+.gallery{
+    padding: $space-sm*2 $space-sm;
+    overflow: hidden;
+    text-align: center;
+    .context{
+        margin-top: $space-sm;
+        position: relative;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+      
+    }
+    h2{
+        text-decoration: underline;
+    }
+
+    .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000, $alpha: 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: $space-sm*4 $space-sm/2;
+        a{
+            width: fit-content;
+            margin: 0 auto;
+        }
+        h2,p{
+            color: $color-white;
+        }
+    }
+
+    a{
+        @include myBtn($color-green);
+    }
+
+    .mee{
+            margin-bottom: $space-sm;
+        }
+
+
+        @media (min-width:576px) {
+            .mee{
+                margin-bottom: $space-lg/2;
+            }
+
+            .context{
+                top: 10vh;
+
+                &.mid{
+                    top: 0;
+                }
+            }
+        }
+
+
+        @media (min-width:576px) and (max-width:768px) {
+            .context{
+                display: flex;
+                justify-content: space-between;
+                height: 70vh;
+                top: 0;
+                
+            }
+
+            .mee{
+                margin-right: 13%;
+            }
+        }
+}
+
+// Gallery End
+
+
+// Team Section
+
+.team{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: $space-sm;
+    overflow: hidden;
+    h3,p{
+        color: $color-white;
+    }
+
+    .sss{
+        display: none;
+    }
+
+    a{
+        @include myBtn(transparent);
+        border: 1px solid $color-white;
+    }
+
+    .team-top ,.team-bottom{
+        display: flex;
+        flex-direction: column;
+
+        
+    }
+
+    .destiny{
+        outline: $color-white inset 2px;
+    }
+
+    .left{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        background-color: $color-green;
+        padding: $space-sm*2 $space-sm;
+    }
+
+    .right{
+        margin-top: $space-sm;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        background-color: $color-blue;
+        padding: $space-sm*2 $space-sm;
+    }
+
+    .docker{
+        background-color: $color-blue;
+        padding: $space-sm*2 $space-sm;
+        margin: $space-sm 0;
+    }
+
+
+
+    @media (min-width:576px) {
+        text-align: left;
+        padding: $space-lg*2 $space-lg;
+        .team-top{
+            flex-direction: row;
+            justify-content: center;
+            position: relative;
+            margin-bottom: $space-lg;
+
+        }
+
+        .left{
+            clip-path: polygon(0 0,62% 0, 100% 100%, 0% 100%);
+            width: 75%;
+            margin-right: -10%;
+            height: 35vh;
+            // position: absolute;
+            position: relative;
+            // left: 5%;
+            padding-right: $space-lg*6;
+
+            .sss{
+                width: 25%;
+                position: absolute;
+                bottom: 3%;
+                right: 17%;
+            }
+        }
+        h3,p{
+            margin-bottom: $space-lg/2;
+        }
+        .right{
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 110%);
+            text-align: right;
+            width: 55%;
+            margin-left: -10%;
+            height: 35vh;
+            position: relative;
+            // right: 5%;
+            margin-top: 0;
+            padding-left: $space-lg*4;
+        }
+
+
+        .team-bottom{
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .docker{
+            border-radius: 5px;
+            width: 30%;
+            text-align: center;
+            border: 1px solid $color-white;
+            outline: $color-blue solid 20px;
+            transform: scale(.85);
+
+            &.right-dock{
+                background-color: $color-green;
+                outline-color: $color-green;
+            }
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+
+        .team-top{
+            flex-direction: column-reverse;
+        }
+        .right{
+            margin-left: auto;
+            width: 70%;
+            height: 25vh;
+        }
+
+        .left{
+            height: 25vh;
+            position: relative;
+            bottom: 15%;
+        }
+        .team-bottom{
+            // flex-direction: column;
+            flex-wrap: wrap;
+            img{
+                order: 2;
+                width: 100%;
+            }
+
+            .docker{
+                width: 48%;
+            }
+        }
+    }
+
+
+}
+
+// Team End
+
+
+
+// Footer Section
+
+.my-footer{
+    background: url('../img/Path 7.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: $space-sm*4 $space-sm $space-sm;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    h2,form{
+        margin-bottom: $space-sm;
+    }
+
+    .my-form{
+        display: flex;
+        flex-direction: column;
+        input{
+            padding: $space-sm/2;
+            outline: none;
+            border: none;
+            margin-bottom: $space-sm;
+            &::placeholder{
+                font-style: italic;
+            }
+        }
+        button{
+            @include myBtn($color-blue);
+        }
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+        margin-top: $space-sm;
+    }
+    li{
+        margin-bottom: $space-sm/2;
+    }
+    h4{
+        @include text($text-ExtraBold,$color-blue ,16px ,18px ,24px );
+    }
+
+
+
+    @media (min-width:576px) {
+        padding: $space-lg*2 $space-lg;
+        text-align: left;
+        h2{
+            text-align: center;
+            margin: $space-lg*2 auto;
+        }
+        // ul{
+        //     width: fit-content;
+        //     margin: auto;
+        // }
+
+       
+
+        .my-form{
+            width: 65%;
+            margin: auto;
+            flex-direction: row;
+            // justify-content: space-between;
+
+
+            input{
+                padding: $space-lg/2;
+                margin: 0;
+                width: 70%;
+                margin-right: $space-lg/2;
+            }
+
+            button{
+                width: 15%;
+            }
+        }
+
+
+        .items{
+            width: 70%;
+            margin:$space-lg*2 auto 0;
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        .my-form{
+            button{
+                width: 25%;
+            }
+        }
+    }
+}
+
+// Footer End
