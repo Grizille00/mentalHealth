@@ -866,6 +866,10 @@ img{
         h3,p{
             margin-bottom: $space-lg/2;
         }
+
+        .sss{
+            display: block;
+        }
         .right{
             clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 110%);
             text-align: right;
