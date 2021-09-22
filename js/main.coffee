@@ -2,7 +2,13 @@ ham = document.querySelector ".hamburger"
 nav = document.querySelector ".my-nav"
 btns = document.querySelectorAll ".menu-btn"
 tabs = document.querySelectorAll ".tab"
+# Preloader
 
+$ window
+    .on "load", ->
+        $ '#preloader' 
+            .fadeOut 500
+        1
 
 
 
@@ -72,4 +78,6 @@ clip x for x in btns
 
 
 # Tabs End
+
+
 

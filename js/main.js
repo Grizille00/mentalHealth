@@ -9,6 +9,12 @@
 
   tabs = document.querySelectorAll(".tab");
 
+  // Preloader
+  $(window).on("load", function() {
+    $('#preloader').fadeOut(500);
+    return 1;
+  });
+
   // Hamburger Menu
   ham.addEventListener("click", function() {
     ham.classList.toggle("open");
