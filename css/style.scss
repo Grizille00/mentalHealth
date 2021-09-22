@@ -36,6 +36,16 @@ $text-ExtraBold:'Gilroy-ExtraBold';
     outline: none;
     border: none;
     border-radius: 4px;
+
+    @media (min-width:576px) {
+        padding: $space-lg/4 $space-lg;
+    }
+
+    @media (min-width:576px) and (max-width:768px) {
+        padding: $space-md/4 $space-md;
+    }
+
+
 }
 
 
@@ -43,9 +53,7 @@ $text-ExtraBold:'Gilroy-ExtraBold';
 @mixin ham {
     height: $ham-sm;
     width: $ham-sm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    position: relative;
     span{
         width: 100%;
         height: .5rem /* 8/16 */;
@@ -53,26 +61,92 @@ $text-ExtraBold:'Gilroy-ExtraBold';
         display: block;
         border-radius: .3125rem /* 5/16 */;
         transition: $speed ease;
-        position: relative;
+        // position: relative;
+        cursor: pointer;
         opacity: 1;
         top: 0;
+
+        
     }
-    &.open{
+    #hamburger{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        height: 100%;
+        width: 100%;
         span{
-            &:nth-child(2){
-                transform: translateX(-100%);
-                opacity: 0;
-            }
+            position: relative;
             &:nth-child(1){
-                top: 30%;
-                transform: rotateZ(-45deg);
-                
+                transition-delay: .5s;
+            }
+            &:nth-child(2){
+                transition-delay: .625s;
             }
             &:nth-child(3){
-                transform: rotateZ(45deg);
-                top: -25%;
+                transition-delay: .75s;
             }
         }
+    }
+
+    #cross{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        transform: rotate(45deg);
+        span{
+            &:nth-child(1){
+                height: 0%;
+                width: 0.5rem;
+                position: absolute;
+                top: 0;
+                left: 100%;
+            }
+            &:nth-child(2){
+                width: 0%;
+                height: .5rem;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition-delay: .25s;
+            }
+        }
+    }
+
+
+    &.open{
+        #hamburger{
+            span{
+                width: 0%;
+                &:nth-child(1){
+                    transition-delay:0s;
+                    }
+                    &:nth-child(2){
+                    transition-delay:.125s;
+                    }
+                    &:nth-child(3){
+                    transition-delay:.25s;
+                    }
+            }
+        }
+    
+        #cross{
+            span{
+                &:nth-child(1){
+                    height: 100%;
+                    left: 45%;
+                    transition-delay: .625s;
+                }
+    
+                &:nth-child(2){
+                    width: 100%;
+                    top: 45%;
+                    transition-delay: .375s;
+                }
+            }
+        }
+    
     }
 
 
@@ -149,7 +223,7 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 15vh;
+    height: 12vh;
     position: absolute;
     width: 100%;
     padding: $space-sm;
@@ -171,22 +245,31 @@ img{
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: $speed ease-in $speed/2;
+        transition: $speed ease-in ;
         visibility: hidden;
         opacity: 0;
+        a{
+            transition: $speed ease-in ;
+            transform: translateY(100%);
+            opacity: 0;
+        }
         &.open{
             visibility: visible;
             opacity: 1;
             a{
+                transition-delay: .675s;
                 margin-top: $space-sm;
+                transform: translateY(0);
+                opacity: 1;
                 font-size: 35px;
+                
             }
         }
 
         
     }
 
-    .hamburger{
+    .menu-toggle{
         position: relative;
         z-index: 2;
         @include ham();
@@ -198,7 +281,9 @@ img{
             width: 15%;
         }
 
+
         .my-nav{
+    
             width: 40%;
             flex-direction: row;
             background-color: transparent;
@@ -207,14 +292,22 @@ img{
             opacity: 1;
             position: relative;
             justify-content: space-evenly;
+
+            a{
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     }
 
 
     @media (min-width:576px) and (max-width:768px) {
+        padding: $space-md/2 $space-md*2;
         .logo{
             width: 20%;
         }
+
+        
     }
 
 }
@@ -232,7 +325,7 @@ img{
     background-color: $color-green;
     height: 90vh;
     position: relative;
-    top: -2vh;
+    top: -1vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -302,7 +395,7 @@ img{
 
         .banner-inner{
 
-            margin:$space-md*4  0 0;
+            // margin:$space-md*4  0 0;
             width: 100%;
             height: auto;
         }
@@ -311,7 +404,7 @@ img{
         }
         img{
             margin-top: 0;
-            width: 60%;
+            width: 85%;
         }
     }
 
@@ -627,8 +720,16 @@ img{
 
         h2,p,a{
             color: $color-white;
-            margin-top: $ham-sm;
+            // margin-top: $ham-sm;
         }
+        p{
+            margin-top: $space-sm;
+        }
+
+    }
+
+    .content{
+        padding: $space-sm*2 $space-sm/2 $space-sm;
     }
 
     @media (max-width:576px) {
@@ -705,14 +806,40 @@ img{
     padding: $space-sm*2 $space-sm;
     overflow: hidden;
     text-align: center;
+    position: relative;
+    button{
+        @include myBtn($color-blue);
+        position:absolute;
+        bottom: 2%;
+        z-index: 3;
+        left: 35%;
+    }
     .context{
         margin-top: $space-sm;
-        position: relative;
+        transition: $speed ease-in-out;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        
 
         img{
             width: 100%;
-            height: 100%;
+            height: 30vh;
             object-fit: cover;
+            border-radius: 5%;
+        }
+
+        &.mid-pic{
+            img{
+                height: 100%;
+            }
+        }
+
+
+        &.gal-show{
+            position: relative;
+            opacity: 1;
+            visibility: visible;
         }
       
     }
@@ -722,6 +849,7 @@ img{
 
     .overlay{
         position: absolute;
+        border-radius: 5%;
         top: 0;
         left: 0;
         width: 100%;
@@ -730,7 +858,7 @@ img{
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: $space-sm*4 $space-sm/2;
+        padding: $space-sm*4 $space-sm/2 $space-sm/3;
         a{
             width: fit-content;
             margin: 0 auto;
@@ -738,7 +866,9 @@ img{
         h2,p{
             color: $color-white;
         }
+        
     }
+    
 
     a{
         @include myBtn($color-green);
@@ -755,11 +885,37 @@ img{
             }
 
             .context{
-                top: 10vh;
+                // top: 10vh;
+                position: relative;
+                opacity: 1;
+                visibility: visible;
+
+
+                .overlay{
+                    padding-bottom: $space-lg
+                }
+
+                &.first{
+                    img{
+                        height: 35vh;
+                    }
+                }
 
                 &.mid{
                     top: 0;
+                    height: 70vh;
                 }
+
+                &.last{
+                    height: 70vh;
+                    img{
+                        height: 100%;
+                    }
+                }
+            }
+
+            button{
+                display: none;
             }
         }
 
@@ -770,7 +926,17 @@ img{
                 justify-content: space-between;
                 height: 70vh;
                 top: 0;
+
+                &.first{
+                    justify-content: space-between;
+                    height: 36vh;
+                }
                 
+                &.last{
+                    height: 36vh;
+                    width: 50%;
+                    margin: 0 auto;
+                }
             }
 
             .mee{
@@ -847,14 +1013,17 @@ img{
         }
 
         .left{
-            clip-path: polygon(0 0,62% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(0 0,64% 0, 100% 100%, 0% 100%);
             width: 75%;
             margin-right: -10%;
-            height: 35vh;
+            // height: 40vh;
             // position: absolute;
             position: relative;
             // left: 5%;
-            padding-right: $space-lg*6;
+            // padding-right: $space-lg*6;
+            p{
+                width: 55%;
+            }
 
             .sss{
                 width: 25%;
@@ -875,11 +1044,15 @@ img{
             text-align: right;
             width: 55%;
             margin-left: -10%;
-            height: 35vh;
+            // height: 40vh;
             position: relative;
             // right: 5%;
             margin-top: 0;
-            padding-left: $space-lg*4;
+            // padding-left: $space-lg*4;
+            p{
+                width: 70%;
+                margin-left: auto;
+            }
         }
 
 
@@ -908,21 +1081,25 @@ img{
 
         .team-top{
             flex-direction: column-reverse;
+            margin-bottom: -$space-md*4;
         }
         .right{
             margin-left: auto;
             width: 70%;
             height: 25vh;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 110%);
         }
 
         .left{
             height: 25vh;
             position: relative;
-            bottom: 15%;
+            bottom: 15vh;
+            clip-path: polygon(0 0,50% 0, 100% 100%, 0% 100%);
         }
         .team-bottom{
             // flex-direction: column;
             flex-wrap: wrap;
+            position: relative;
             img{
                 order: 2;
                 width: 100%;
@@ -1030,7 +1207,7 @@ img{
 
 
             input{
-                padding: $space-lg/2;
+                padding: $space-lg/3 $space-lg/2;
                 margin: 0;
                 width: 70%;
                 margin-right: $space-lg/2;
@@ -1050,10 +1227,16 @@ img{
 
 
     @media (min-width:576px) and (max-width:768px) {
+        // padding-bottom: $space-lg*2;
         .my-form{
+            width: 100%;
             button{
                 width: 25%;
             }
+        }
+        .items{
+            // width: 100%;
+            // margin: 0;
         }
     }
 }

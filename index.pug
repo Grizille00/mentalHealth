@@ -32,10 +32,14 @@ html(lang="en")
         //- Header Section
         header.my-header 
             img.logo(src="./img/MAIN-LOGO-CMYK-transparent-background-copy.png", alt="")
-            .hamburger
-                span 
-                span 
-                span 
+            .menu-toggle
+                #hamburger
+                    span 
+                    span 
+                    span
+                #cross
+                    span 
+                    span   
             nav.my-nav
                 a(href="#") About Us 
                 a(href="#") Services
@@ -169,10 +173,10 @@ html(lang="en")
                     .context.first    
                         img.mee.img-fluid(src="./img/pexels-gabby-k-5384618.png", alt="")
                         img.img-fluid(src="./img/pexels-karolina-grabowska-4386153.png", alt="")
-                .col-lg-6.col-md-12
-                    .context.mid 
-                         img(src="./img/pexels-anna-shvets-4557876.png", alt="")
-                         .overlay
+                .col-lg-5.col-md-12
+                    .context.mid-pic 
+                        img(src="./img/pexels-anna-shvets-4557876.png", alt="")
+                        .overlay
                             h2 Fundraising
                             p. 
                                 Corporate Donations, Peer to Peer Donations
@@ -181,7 +185,9 @@ html(lang="en")
                                 Just to show our gratitude, here are the 
                                 largest donors from each of the groups 
                             a.my-btn(href="#") View Donor Shoutouts
-                .col-lg-3.col-md-12
+                    button.my-btn View All
+                        
+                .col-lg-4.col-md-12
                     .context.last 
                         img(src="./img/pexels-rfstudio-3059892.png", alt="")
         //- Gallery End
@@ -234,7 +240,7 @@ html(lang="en")
                 input(type="email" placeholder="your email here") 
                 button.my-btn(type="submit") Sign Up
             .items.row
-                .col-lg-4.col-md-6  
+                .col-lg-4.col-md-4 
                     ul
                         h4 Support
                         li 
@@ -242,7 +248,7 @@ html(lang="en")
                         li 
                             span 855-845-7415
                 
-                .col-lg-4.col-md-6
+                .col-lg-4.col-md-4
                     ul
                         h4 Quick Links
                         li 
@@ -256,7 +262,7 @@ html(lang="en")
                                 span careers
 
 
-                .col-lg-4.col-md-12
+                .col-lg-4.col-md-4
                     ul
                         h4 Contact Info
                         li 

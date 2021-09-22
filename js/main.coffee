@@ -1,7 +1,7 @@
-ham = document.querySelector ".hamburger"
-nav = document.querySelector ".my-nav"
+
 btns = document.querySelectorAll ".menu-btn"
 tabs = document.querySelectorAll ".tab"
+
 # Preloader
 
 $ window
@@ -13,13 +13,18 @@ $ window
 
 
 # Hamburger Menu
-ham
-    .addEventListener "click",->
-        ham.classList.toggle "open"
-        nav.classList.toggle "open"
-        1
-# Hamburger End
 
+
+
+$ '.menu-toggle' 
+    .click ->
+        $ '.menu-toggle'
+            .toggleClass 'open'
+        $ ".my-nav"
+            .toggleClass 'open'
+        1
+
+# Hamburger End
 
 # Slick
 $ document
@@ -78,6 +83,39 @@ clip x for x in btns
 
 
 # Tabs End
+
+
+btn_ctx = {
+    open:"View All"
+    close:"Close"
+}
+
+
+# Gallery 
+
+pics = document.querySelectorAll '.context'
+main_pic = document.querySelector '.mid-pic'
+btn = document.querySelector '.gallery button' 
+body = document.querySelector 'body'
+main_pic.classList.add 'gal-show'
+
+
+
+
+
+btn.addEventListener 'click',->
+    hydra i for i in pics if  body.offsetWidth < 576 
+    
+    btn.style.display = 'none'
+    main_pic.classList.add 'gal-show' 
+
+    
+
+
+hydra = (pic)->
+    pic.classList.toggle "gal-show"
+
+
 
 
 

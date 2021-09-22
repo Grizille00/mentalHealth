@@ -1,9 +1,5 @@
 (function() {
-  var btns, clip, defa, ham, j, len, nav, show_tab, tabs, x;
-
-  ham = document.querySelector(".hamburger");
-
-  nav = document.querySelector(".my-nav");
+  var body, btn, btn_ctx, btns, clip, defa, hydra, j, len, main_pic, pics, show_tab, tabs, x;
 
   btns = document.querySelectorAll(".menu-btn");
 
@@ -16,9 +12,9 @@
   });
 
   // Hamburger Menu
-  ham.addEventListener("click", function() {
-    ham.classList.toggle("open");
-    nav.classList.toggle("open");
+  $('.menu-toggle').click(function() {
+    $('.menu-toggle').toggleClass('open');
+    $(".my-nav").toggleClass('open');
     return 1;
   });
 
@@ -89,6 +85,37 @@
   }
 
   // Tabs End
+  btn_ctx = {
+    open: "View All",
+    close: "Close"
+  };
+
+  // Gallery 
+  pics = document.querySelectorAll('.context');
+
+  main_pic = document.querySelector('.mid-pic');
+
+  btn = document.querySelector('.gallery button');
+
+  body = document.querySelector('body');
+
+  main_pic.classList.add('gal-show');
+
+  btn.addEventListener('click', function() {
+    var i, k, len1;
+    if (body.offsetWidth < 576) {
+      for (k = 0, len1 = pics.length; k < len1; k++) {
+        i = pics[k];
+        hydra(i);
+      }
+    }
+    btn.style.display = 'none';
+    return main_pic.classList.add('gal-show');
+  });
+
+  hydra = function(pic) {
+    return pic.classList.toggle("gal-show");
+  };
 
 }).call(this);
 
