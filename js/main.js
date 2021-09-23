@@ -86,8 +86,9 @@
 
   // Tabs End
   btn_ctx = {
-    open: "View All",
-    close: "Close"
+    open: "Show Gallery",
+    close: "Hide Gallery",
+    mode: true
   };
 
   // Gallery 
@@ -109,7 +110,13 @@
         hydra(i);
       }
     }
-    btn.style.display = 'none';
+    if (btn_ctx.mode) {
+      btn.textContent = btn_ctx.close;
+      btn_ctx.mode = false;
+    } else {
+      btn.textContent = btn_ctx.open;
+      btn_ctx.mode = true;
+    }
     return main_pic.classList.add('gal-show');
   });
 

@@ -101,7 +101,7 @@ $text-ExtraBold:'Gilroy-ExtraBold';
                 width: 0.5rem;
                 position: absolute;
                 top: 0;
-                left: 100%;
+                left: 50%;
             }
             &:nth-child(2){
                 width: 0%;
@@ -182,7 +182,7 @@ h1{
 
 h2{
     @include text(
-        $text-ExtraBold,
+        $text-regular,
         $color-green, 
         22px, 
         32px,
@@ -194,8 +194,9 @@ p,span{
         $text-medium, 
         $color-blue, 
         14px, 
-        17px,
+        19px,
         23px );
+    font-weight: 100;
 }
 
 a{
@@ -203,8 +204,8 @@ a{
         $text-light, 
         $color-white, 
         14px, 
-        17px,
-        23px );
+        19px,
+        25px );
     text-decoration: none;
     opacity: .9;
     &:hover{
@@ -238,9 +239,11 @@ img{
         width: 100%;
         height: 100vh;
         overflow: hidden;
+        transition: all $speed ease-in-out;
+        clip-path: circle(30px at calc(100% - 65px) 65px);
         background-color: $color-blue;
         top: 0;
-        left: 0;
+        right: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -256,6 +259,7 @@ img{
         &.open{
             visibility: visible;
             opacity: 1;
+            clip-path: circle(100%);
             a{
                 transition-delay: .675s;
                 margin-top: $space-sm;
@@ -278,13 +282,13 @@ img{
     @media (min-width:992px) {
         padding: $space-lg;
         .logo{
-            width: 15%;
+            width: 12%;
         }
 
 
         .my-nav{
     
-            width: 40%;
+            width: 45%;
             flex-direction: row;
             background-color: transparent;
             height: auto;
@@ -355,37 +359,51 @@ img{
 
     @media (min-width:576px) {
         top: -8vh;
-        height: 102vh;
+        height: 108vh;
         text-align: left;
         background-color: transparent;
-        justify-content: space-between;
+        justify-content:center;
+        flex-wrap: nowrap;
         align-items: center;
-        margin-bottom: -20vh;
+        padding-top: $space-lg*2 ;
+        margin-bottom: -10%;
         a{
             background-color: $color-green;
         }
         img{
-            width: 60%;
-            margin-top: $space-lg*4.5;
+            width: 58%;
+            // margin-top: $space-lg*4.5;
+            margin: 0;
         }
         .banner-inner{
             padding: $space-lg;
-            margin-top: $space-lg*6.2;
-            align-self: flex-start;
+            margin: 0;
             width: 38%;
-            height: 60%;
+            height: 100%;
+            position: relative;
+            top: 10%;
+            justify-content:flex-start;
+            align-items: flex-start;
+
+            p{
+                // margin-top: auto;
+                margin-bottom: $space-sm;
+            }
         }
         h1{
-            margin-bottom: $space-lg*2;
+            margin-bottom: $space-lg*3 +$space-sm/2;
+            // justify-self: flex-s;
         }
     }
 
 
     @media (min-width:576px) and (max-width:768px) {
+        flex-wrap: wrap;
         background-color: $color-green;
         text-align: center;
         height: 65vh;
         justify-content: center;
+        align-items: center;
         margin-bottom: 0;
 
         a{
@@ -394,8 +412,8 @@ img{
         // flex-direction: column;
 
         .banner-inner{
-
-            // margin:$space-md*4  0 0;
+            align-items: center;
+            margin: $space-md*4 0 $space-md*2;
             width: 100%;
             height: auto;
         }
@@ -453,7 +471,7 @@ img{
     }
 
     @media (min-width:576px) and (max-width:768px) {
-        padding: $space-md*5 $space-md*2 $space-md;
+        padding: $space-md*6 $space-md $space-md;
         text-align: center;
         flex-direction: column-reverse;
         img{
@@ -489,17 +507,25 @@ img{
         background: transparent;
         border: none;
         outline: none;
-        transform: $speed ease;
+        transition: $speed ease;
         display: flex;
         justify-content: space-between;
         color: $color-gray;
         span,i{
+            transition: $speed ease;
             @include text(
                 $text-medium, 
                 $color-gray, 
                 16px, 
                 17px,
                 28px );
+        }
+
+        i{
+            transition-delay: .15s;
+        }
+        span{
+            transition-delay: .275s;
         }
         &.active-btn{
             span,i{
@@ -588,7 +614,7 @@ img{
             padding-top: $space-lg;
             flex-direction: column;
             // justify-content: space-between;
-            width: 25%;
+            width: 37%;
             button{
                 display: flex;
                 justify-content: flex-start;
@@ -604,7 +630,7 @@ img{
             }
         }
         .tab-content{
-            width: 65%;
+            width:55%;
             padding: $space-lg $space-lg/4;
 
             a{
@@ -774,6 +800,7 @@ img{
         text-align: center;
         .reachout-inner{
             flex-direction: column;
+            padding: $space-md;
             .content{
                 align-items: center;
             }
@@ -782,7 +809,7 @@ img{
             }
 
             h2,p,a{
-                margin-top: $space-md;
+                margin-top: $space-md/2;
             }
 
             .content,img{
@@ -807,12 +834,13 @@ img{
     overflow: hidden;
     text-align: center;
     position: relative;
+    transition: all $speed ease-in;
     button{
         @include myBtn($color-blue);
         position:absolute;
-        bottom: 2%;
+        bottom: 0;
         z-index: 3;
-        left: 35%;
+        left: 29%;
     }
     .context{
         margin-top: $space-sm;
@@ -830,6 +858,13 @@ img{
         }
 
         &.mid-pic{
+            img{
+                height: 100%;
+            }
+        }
+
+        &.last{
+            height: 80%;
             img{
                 height: 100%;
             }
@@ -879,70 +914,92 @@ img{
         }
 
 
-        @media (min-width:576px) {
-            .mee{
-                margin-bottom: $space-lg/2;
+    @media (min-width:576px) {
+        .mee{
+            margin-bottom: $space-lg/2;
+        }
+
+        .context{
+            // top: 10vh;
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+
+
+            .overlay{
+                padding-bottom: $space-lg
             }
 
-            .context{
-                // top: 10vh;
-                position: relative;
-                opacity: 1;
-                visibility: visible;
+            &.first{
 
-
-                .overlay{
-                    padding-bottom: $space-lg
-                }
-
-                &.first{
-                    img{
-                        height: 35vh;
+                img{
+                    &:nth-child(1){
+                        height: 20%;
+                    }
+                    &:nth-child(2){
+                        height: 50%;
                     }
                 }
+            }
 
-                &.mid{
-                    top: 0;
-                    height: 70vh;
+            &.mid-pic{
+                top: $space-sm;
+                // height: 100%;
+            }
+
+            &.last{
+                height: 85%;
+                img{
+                    height: 100%;
                 }
+            }
+        }
 
-                &.last{
-                    height: 70vh;
-                    img{
+        button{
+            display: none;
+        }
+    }
+
+
+    @media (min-width:576px) and (max-width:768px) {
+        .context{
+            display: flex;
+            justify-content: space-between;
+            // padding: $space-md 0;
+            height: 70vh;
+            top: 0;
+
+            &.first{
+                justify-content: space-evenly;
+                height: 100%;
+                img{
+                    width: 45%;
+                    &:nth-child(1){
+                        height: 100%;
+                    }
+                    &:nth-child(2){
                         height: 100%;
                     }
                 }
             }
-
-            button{
-                display: none;
+            
+            &.last{
+                height: 36vh;
+                width: 50%;
+                margin: $space-md auto 0;
             }
         }
 
-
-        @media (min-width:576px) and (max-width:768px) {
-            .context{
-                display: flex;
-                justify-content: space-between;
-                height: 70vh;
-                top: 0;
-
-                &.first{
-                    justify-content: space-between;
-                    height: 36vh;
-                }
-                
-                &.last{
-                    height: 36vh;
-                    width: 50%;
-                    margin: 0 auto;
-                }
-            }
-
-            .mee{
-                margin-right: 13%;
-            }
+        .mee{
+            margin-right: 13%;
         }
+
+
+        .overlay{
+            padding: $space-md*4 $space-md;
+        }
+    }
+
 }
 
 // Gallery End
@@ -1022,7 +1079,7 @@ img{
             // left: 5%;
             // padding-right: $space-lg*6;
             p{
-                width: 55%;
+                width: 48%;
             }
 
             .sss{
@@ -1050,7 +1107,7 @@ img{
             margin-top: 0;
             // padding-left: $space-lg*4;
             p{
-                width: 70%;
+                width: 60%;
                 margin-left: auto;
             }
         }
@@ -1079,6 +1136,12 @@ img{
 
     @media (min-width:576px) and (max-width:768px) {
 
+
+        
+        .my-btn{
+            padding: $space-sm/3 $ham-sm/5;
+        }
+
         .team-top{
             flex-direction: column-reverse;
             margin-bottom: -$space-md*4;
@@ -1086,14 +1149,14 @@ img{
         .right{
             margin-left: auto;
             width: 70%;
-            height: 25vh;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 110%);
+            height: auto;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 110%);
         }
 
         .left{
-            height: 25vh;
+            height: auto;
             position: relative;
-            bottom: 15vh;
+            bottom: 16vh;
             clip-path: polygon(0 0,50% 0, 100% 100%, 0% 100%);
         }
         .team-bottom{
@@ -1141,8 +1204,14 @@ img{
             outline: none;
             border: none;
             margin-bottom: $space-sm;
+            text-align: center;
+            transition: $speed ease-in;
+            transform: scale(.98);
             &::placeholder{
                 font-style: italic;
+            }
+            &:active{
+                transform: scale(1)
             }
         }
         button{
@@ -1158,7 +1227,7 @@ img{
         margin-bottom: $space-sm/2;
     }
     h4{
-        @include text($text-ExtraBold,$color-blue ,16px ,18px ,24px );
+        @include text($text-regular,$color-blue ,16px ,18px ,24px );
     }
     .my-img{
         display: none;
@@ -1211,10 +1280,12 @@ img{
                 margin: 0;
                 width: 70%;
                 margin-right: $space-lg/2;
+                text-align: left;
+                
             }
 
             button{
-                width: 15%;
+                width: 20%;
             }
         }
 
@@ -1233,11 +1304,11 @@ img{
             button{
                 width: 25%;
             }
+            input{
+                text-align:center;
+            }
         }
-        .items{
-            // width: 100%;
-            // margin: 0;
-        }
+        
     }
 }
 

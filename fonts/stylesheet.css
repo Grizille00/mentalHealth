@@ -81,7 +81,7 @@
         url('Gilroy-Extrabold.woff2') format('woff2'),
         url('Gilroy-Extrabold.woff') format('woff'),
         url('Gilroy-Extrabold.ttf') format('truetype');
-    font-weight: 800;
+    font-weight: 100;
     font-style: normal;
 }
 

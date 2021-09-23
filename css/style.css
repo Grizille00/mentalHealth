@@ -15,7 +15,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Gilroy-ExtraBold";
+  font-family: "Gilroy-Regular";
   color: #0493A3;
   font-size: 22px;
 }
@@ -34,6 +34,7 @@ p, span {
   font-family: "Gilroy-Medium";
   color: #27226B;
   font-size: 14px;
+  font-weight: 100;
 }
 @media (min-width: 576px) {
   p, span {
@@ -42,7 +43,7 @@ p, span {
 }
 @media (min-width: 576px) and (max-width: 768px) {
   p, span {
-    font-size: 17px;
+    font-size: 19px;
   }
 }
 
@@ -55,12 +56,12 @@ a {
 }
 @media (min-width: 576px) {
   a {
-    font-size: 23px;
+    font-size: 25px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   a {
-    font-size: 17px;
+    font-size: 19px;
   }
 }
 a:hover {
@@ -91,9 +92,12 @@ img {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  transition: all 400ms ease-in-out;
+  -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
+          clip-path: circle(30px at calc(100% - 65px) 65px);
   background-color: #27226B;
   top: 0;
-  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,6 +114,8 @@ img {
 .my-header .my-nav.open {
   visibility: visible;
   opacity: 1;
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
 }
 .my-header .my-nav.open a {
   transition-delay: 0.675s;
@@ -168,7 +174,7 @@ img {
   width: 0.5rem;
   position: absolute;
   top: 0;
-  left: 100%;
+  left: 50%;
 }
 .my-header .menu-toggle #cross span:nth-child(2) {
   width: 0%;
@@ -210,10 +216,10 @@ img {
     padding: 40px;
   }
   .my-header .logo {
-    width: 15%;
+    width: 12%;
   }
   .my-header .my-nav {
-    width: 40%;
+    width: 45%;
     flex-direction: row;
     background-color: transparent;
     height: auto;
@@ -285,43 +291,55 @@ img {
 @media (min-width: 576px) {
   .banner {
     top: -8vh;
-    height: 102vh;
+    height: 108vh;
     text-align: left;
     background-color: transparent;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: nowrap;
     align-items: center;
-    margin-bottom: -20vh;
+    padding-top: 80px;
+    margin-bottom: -10%;
   }
   .banner a {
     background-color: #0493A3;
   }
   .banner img {
-    width: 60%;
-    margin-top: 180px;
+    width: 58%;
+    margin: 0;
   }
   .banner .banner-inner {
     padding: 40px;
-    margin-top: 248px;
-    align-self: flex-start;
+    margin: 0;
     width: 38%;
-    height: 60%;
+    height: 100%;
+    position: relative;
+    top: 10%;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .banner .banner-inner p {
+    margin-bottom: 20px;
   }
   .banner h1 {
-    margin-bottom: 80px;
+    margin-bottom: 130px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .banner {
+    flex-wrap: wrap;
     background-color: #0493A3;
     text-align: center;
     height: 65vh;
     justify-content: center;
+    align-items: center;
     margin-bottom: 0;
   }
   .banner a {
     background-color: #27226B;
   }
   .banner .banner-inner {
+    align-items: center;
+    margin: 140px 0 70px;
     width: 100%;
     height: auto;
   }
@@ -386,7 +404,7 @@ img {
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .about {
-    padding: 175px 70px 35px;
+    padding: 210px 35px 35px;
     text-align: center;
     flex-direction: column-reverse;
   }
@@ -416,12 +434,13 @@ img {
   background: transparent;
   border: none;
   outline: none;
-  transform: 400ms ease;
+  transition: 400ms ease;
   display: flex;
   justify-content: space-between;
   color: #AFAFB1;
 }
 .services .menu-btn span, .services .menu-btn i {
+  transition: 400ms ease;
   font-family: "Gilroy-Medium";
   color: #AFAFB1;
   font-size: 16px;
@@ -435,6 +454,12 @@ img {
   .services .menu-btn span, .services .menu-btn i {
     font-size: 17px;
   }
+}
+.services .menu-btn i {
+  transition-delay: 0.15s;
+}
+.services .menu-btn span {
+  transition-delay: 0.275s;
 }
 .services .menu-btn.active-btn span, .services .menu-btn.active-btn i {
   color: #0493A3;
@@ -502,7 +527,7 @@ img {
     display: flex;
     padding-top: 40px;
     flex-direction: column;
-    width: 25%;
+    width: 37%;
   }
   .services .tab-controls1 button {
     display: flex;
@@ -518,7 +543,7 @@ img {
     margin-left: auto;
   }
   .services .tab-content {
-    width: 65%;
+    width: 55%;
     padding: 40px 10px;
   }
   .services .tab-content a {
@@ -681,6 +706,7 @@ img {
   }
   .reachout .reachout-inner {
     flex-direction: column;
+    padding: 35px;
   }
   .reachout .reachout-inner .content {
     align-items: center;
@@ -689,7 +715,7 @@ img {
     height: 25%;
   }
   .reachout .reachout-inner h2, .reachout .reachout-inner p, .reachout .reachout-inner a {
-    margin-top: 35px;
+    margin-top: 17.5px;
   }
   .reachout .reachout-inner .content, .reachout .reachout-inner img {
     width: 100%;
@@ -701,6 +727,7 @@ img {
   overflow: hidden;
   text-align: center;
   position: relative;
+  transition: all 400ms ease-in;
 }
 .gallery button {
   padding: 10px 20px;
@@ -710,9 +737,9 @@ img {
   border: none;
   border-radius: 4px;
   position: absolute;
-  bottom: 2%;
+  bottom: 0;
   z-index: 3;
-  left: 35%;
+  left: 29%;
 }
 @media (min-width: 576px) {
   .gallery button {
@@ -739,6 +766,12 @@ img {
   border-radius: 5%;
 }
 .gallery .context.mid-pic img {
+  height: 100%;
+}
+.gallery .context.last {
+  height: 80%;
+}
+.gallery .context.last img {
   height: 100%;
 }
 .gallery .context.gal-show {
@@ -804,15 +837,17 @@ img {
   .gallery .context .overlay {
     padding-bottom: 40px;
   }
-  .gallery .context.first img {
-    height: 35vh;
+  .gallery .context.first img:nth-child(1) {
+    height: 20%;
   }
-  .gallery .context.mid {
-    top: 0;
-    height: 70vh;
+  .gallery .context.first img:nth-child(2) {
+    height: 50%;
+  }
+  .gallery .context.mid-pic {
+    top: 20px;
   }
   .gallery .context.last {
-    height: 70vh;
+    height: 85%;
   }
   .gallery .context.last img {
     height: 100%;
@@ -829,16 +864,28 @@ img {
     top: 0;
   }
   .gallery .context.first {
-    justify-content: space-between;
-    height: 36vh;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+  .gallery .context.first img {
+    width: 45%;
+  }
+  .gallery .context.first img:nth-child(1) {
+    height: 100%;
+  }
+  .gallery .context.first img:nth-child(2) {
+    height: 100%;
   }
   .gallery .context.last {
     height: 36vh;
     width: 50%;
-    margin: 0 auto;
+    margin: 35px auto 0;
   }
   .gallery .mee {
     margin-right: 13%;
+  }
+  .gallery .overlay {
+    padding: 140px 35px;
   }
 }
 
@@ -918,7 +965,7 @@ img {
     position: relative;
   }
   .team .left p {
-    width: 55%;
+    width: 48%;
   }
   .team .left .sss {
     width: 25%;
@@ -942,7 +989,7 @@ img {
     margin-top: 0;
   }
   .team .right p {
-    width: 70%;
+    width: 60%;
     margin-left: auto;
   }
   .team .team-bottom {
@@ -963,6 +1010,9 @@ img {
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
+  .team .my-btn {
+    padding: 6.6666666667px 10px;
+  }
   .team .team-top {
     flex-direction: column-reverse;
     margin-bottom: -140px;
@@ -970,14 +1020,14 @@ img {
   .team .right {
     margin-left: auto;
     width: 70%;
-    height: 25vh;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 110%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 110%);
+    height: auto;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 110%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 110%);
   }
   .team .left {
-    height: 25vh;
+    height: auto;
     position: relative;
-    bottom: 15vh;
+    bottom: 16vh;
     -webkit-clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
             clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
   }
@@ -1016,6 +1066,9 @@ img {
   outline: none;
   border: none;
   margin-bottom: 20px;
+  text-align: center;
+  transition: 400ms ease-in;
+  transform: scale(0.98);
 }
 .my-footer .my-form input::-moz-placeholder {
   font-style: italic;
@@ -1025,6 +1078,9 @@ img {
 }
 .my-footer .my-form input::placeholder {
   font-style: italic;
+}
+.my-footer .my-form input:active {
+  transform: scale(1);
 }
 .my-footer .my-form button {
   padding: 10px 20px;
@@ -1053,7 +1109,7 @@ img {
   margin-bottom: 10px;
 }
 .my-footer h4 {
-  font-family: "Gilroy-ExtraBold";
+  font-family: "Gilroy-Regular";
   color: #27226B;
   font-size: 16px;
 }
@@ -1106,9 +1162,10 @@ img {
     margin: 0;
     width: 70%;
     margin-right: 20px;
+    text-align: left;
   }
   .my-footer .my-form button {
-    width: 15%;
+    width: 20%;
   }
   .my-footer .items {
     width: 70%;
@@ -1121,6 +1178,9 @@ img {
   }
   .my-footer .my-form button {
     width: 25%;
+  }
+  .my-footer .my-form input {
+    text-align: center;
   }
 }
 

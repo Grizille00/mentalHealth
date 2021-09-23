@@ -86,8 +86,9 @@ clip x for x in btns
 
 
 btn_ctx = {
-    open:"View All"
-    close:"Close"
+    open:"Show Gallery"
+    close:"Hide Gallery"
+    mode:true
 }
 
 
@@ -101,12 +102,14 @@ main_pic.classList.add 'gal-show'
 
 
 
-
-
 btn.addEventListener 'click',->
     hydra i for i in pics if  body.offsetWidth < 576 
-    
-    btn.style.display = 'none'
+    if btn_ctx.mode
+        btn.textContent = btn_ctx.close
+        btn_ctx.mode=false
+    else
+        btn.textContent = btn_ctx.open
+        btn_ctx.mode=true
     main_pic.classList.add 'gal-show' 
 
     
