@@ -277,12 +277,12 @@ img {
 }
 @media (min-width: 576px) {
   .banner a {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .banner a {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .banner h2, .banner p {
@@ -372,12 +372,12 @@ img {
 }
 @media (min-width: 576px) {
   .about a {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .about a {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .about img {
@@ -582,12 +582,12 @@ img {
 }
 @media (min-width: 576px) {
   .contact a {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .contact a {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .contact h2, .contact p, .contact a {
@@ -650,12 +650,12 @@ img {
 }
 @media (min-width: 576px) {
   .reachout .reachout-inner a {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .reachout .reachout-inner a {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .reachout .reachout-inner h2, .reachout .reachout-inner p, .reachout .reachout-inner a {
@@ -743,12 +743,12 @@ img {
 }
 @media (min-width: 576px) {
   .gallery button {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .gallery button {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .gallery .context {
@@ -814,12 +814,12 @@ img {
 }
 @media (min-width: 576px) {
   .gallery a {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .gallery a {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .gallery .mee {
@@ -913,12 +913,12 @@ img {
 }
 @media (min-width: 576px) {
   .team a {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .team a {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .team .team-top, .team .team-bottom {
@@ -1092,12 +1092,12 @@ img {
 }
 @media (min-width: 576px) {
   .my-footer .my-form button {
-    padding: 10px 40px;
+    padding: 13.3333333333px 40px;
   }
 }
 @media (min-width: 576px) and (max-width: 768px) {
   .my-footer .my-form button {
-    padding: 8.75px 35px;
+    padding: 11.6666666667px 35px;
   }
 }
 .my-footer ul {

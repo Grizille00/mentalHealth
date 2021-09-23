@@ -38,11 +38,11 @@ $text-ExtraBold:'Gilroy-ExtraBold';
     border-radius: 4px;
 
     @media (min-width:576px) {
-        padding: $space-lg/4 $space-lg;
+        padding: $space-lg/3 $space-lg;
     }
 
     @media (min-width:576px) and (max-width:768px) {
-        padding: $space-md/4 $space-md;
+        padding: $space-md/3 $space-md;
     }
 
 
@@ -693,10 +693,6 @@ img{
             width: 45%;
         }
 
-
-        h2,p,a{
-            // margin-bottom: $space-lg;
-        }
     }
 
 
