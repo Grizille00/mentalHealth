@@ -14,6 +14,26 @@ $text-light: 'Gilroy-Light';
 $text-semiBold:'Gilroy-SemiBold';
 $text-ExtraBold:'Gilroy-ExtraBold';
 
+// keyframes
+
+@keyframes reed{
+    0%{ 
+        transform: translateY(-15%);
+        transform:rotate(-10deg);
+    }
+    50%{
+        transform:translateY(0) rotate(15deg);
+    }
+    75%{
+        transform:rotate(-10deg);
+    }
+    100%{
+        transform:rotate(0);
+
+    }
+}
+
+
 // Mixins
 
 @mixin text($font, $color, $sm, $md, $lg) {
@@ -47,6 +67,7 @@ $text-ExtraBold:'Gilroy-ExtraBold';
 
 
 }
+
 
 
 
@@ -263,9 +284,11 @@ img{
             a{
                 transition-delay: .675s;
                 margin-top: $space-sm;
-                transform: translateY(0);
+                // transform: translateY(0);
                 opacity: 1;
                 font-size: 35px;
+                animation:reed 1.5s linear;
+                animation-fill-mode: forwards;
                 
             }
         }
@@ -1364,3 +1387,7 @@ img{
         background-color: #8d22ff;
     }
 }
+
+
+
+

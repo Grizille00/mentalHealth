@@ -1,3 +1,33 @@
+@-webkit-keyframes reed {
+  0% {
+    transform: translateY(-15%);
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: translateY(0) rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes reed {
+  0% {
+    transform: translateY(-15%);
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: translateY(0) rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
 h1 {
   font-family: "Gilroy-Regular";
   color: #fff;
@@ -120,9 +150,12 @@ img {
 .my-header .my-nav.open a {
   transition-delay: 0.675s;
   margin-top: 20px;
-  transform: translateY(0);
   opacity: 1;
   font-size: 35px;
+  -webkit-animation: reed 1.5s linear;
+          animation: reed 1.5s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 .my-header .menu-toggle {
   position: relative;
