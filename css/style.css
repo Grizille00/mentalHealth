@@ -260,6 +260,8 @@ img {
     opacity: 1;
     position: relative;
     justify-content: space-evenly;
+    -webkit-clip-path: none;
+            clip-path: none;
   }
   .my-header .my-nav a {
     opacity: 1;
