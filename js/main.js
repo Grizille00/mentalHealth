@@ -43,7 +43,9 @@
           settings: {
             slidesToShow: 1,
             centerPadding: '20px',
-            centerMode: true
+            centerMode: true,
+            autoplay: true,
+            autoplaySpeed: 3000
           }
         }
       ]
@@ -55,7 +57,7 @@
   // Tabs
   defa = btns[0];
 
-  btns[0].classList.add("active-btn");
+  defa.classList.add("active-btn");
 
   tabs[0].classList.add('active-tab');
 
@@ -104,12 +106,13 @@
 
   btn.addEventListener('click', function() {
     var i, k, len1;
-    if (body.offsetWidth < 576) {
+    if (body.offsetWidth < 780) {
       for (k = 0, len1 = pics.length; k < len1; k++) {
         i = pics[k];
         hydra(i);
       }
     }
+    btn.classList.toggle('view');
     if (btn_ctx.mode) {
       btn.textContent = btn_ctx.close;
       btn_ctx.mode = false;

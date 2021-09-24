@@ -51,11 +51,12 @@ $text-ExtraBold:'Gilroy-ExtraBold';
 
 @mixin myBtn($col){
     padding: $space-sm/2 $space-sm ;
-    color: $color-white;
     background-color: $col;
     outline: none;
     border: none;
     border-radius: 4px;
+    @include text($text-regular,$color-white ,17px ,22px ,26px );
+    font-weight: 700;
 
     @media (min-width:576px) {
         padding: $space-lg/3 $space-lg;
@@ -177,6 +178,11 @@ $text-ExtraBold:'Gilroy-ExtraBold';
 }
 
 
+@mixin hydra{
+    width:100%;
+    text-align:center;
+}
+
 // Spacing
 
 $space-sm:20px;
@@ -245,7 +251,7 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 12vh;
+    height: 14vh;
     position: absolute;
     width: 100%;
     padding: $space-sm;
@@ -303,7 +309,7 @@ img{
     }
 
     @media (min-width:992px) {
-        padding: $space-lg;
+        padding:  $space-lg*3/2;
         .logo{
             width: 12%;
         }
@@ -331,6 +337,7 @@ img{
 
     @media (min-width:576px) and (max-width:768px) {
         padding: $space-md/2 $space-md*2;
+        height: 11vh;
         .logo{
             width: 20%;
         }
@@ -390,17 +397,17 @@ img{
         flex-wrap: nowrap;
         align-items: center;
         padding-top: $space-lg*2 ;
-        margin-bottom: -10%;
+        margin-bottom: -20vh;
         a{
             background-color: $color-green;
         }
         img{
-            width: 58%;
+            width: 57%;
             // margin-top: $space-lg*4.5;
             margin: 0;
         }
         .banner-inner{
-            padding: $space-lg;
+            padding: $space-lg*3/2 $space-md;
             margin: 0;
             width: 38%;
             height: 100%;
@@ -450,6 +457,16 @@ img{
         }
     }
 
+    @media (min-width:1400px) {
+        margin-bottom: -15vh;
+        padding-top: $space-lg*5;
+        .banner-inner{
+            top: 0;
+        }
+
+    }
+
+
 }
 
 // Banner End
@@ -461,7 +478,7 @@ img{
     background: url('../img/Path 2.png') no-repeat;
     background-position: top;
     background-size: contain;
-    padding: $space-sm*5 $space-sm $space-sm;
+    padding: $space-sm*5 $space-sm $space-sm*3;
     text-align: center;
     display: flex;
     flex-direction: column-reverse;
@@ -472,18 +489,21 @@ img{
     }
 
     img{
-        margin-top: $space-sm*3;
+        margin-top: $space-sm + $space-sm/2;
     }
 
 
     @media (min-width:576px) {
-        padding: $space-lg*5 $space-lg $space-lg;
+        padding: $space-lg*6 $space-lg $space-lg;
         flex-direction: row;
         align-items: center;
         text-align: left;
         justify-content: space-between;
         h2,p{
             margin-bottom: $space-lg/2;
+        }
+        p{
+            width: 82%;
         }
         img{
             width: 45%;
@@ -495,11 +515,12 @@ img{
     }
 
     @media (min-width:576px) and (max-width:768px) {
-        padding: $space-md*6 $space-md $space-md;
+        padding: $space-md*7 $space-md $space-md;
         text-align: center;
         flex-direction: column-reverse;
         img{
             width: 60%;
+            margin-top: $space-md*3 /2;
         }
         .about-inner{
             width: 100%;
@@ -619,6 +640,8 @@ img{
 
         .risk{
             display: block;
+            right: -13%;
+            bottom: 1%;
         }
         h2{
             text-align: center;
@@ -670,12 +693,27 @@ img{
 
 
     @media (min-width:576px) and (max-width:768px) {
+        text-align: center;
+        padding: $space-md*4 $space-md;
+        margin-top: $space-md*2;
+        .services-inner{
+            flex-direction: column;
+        }
         .tab-controls1{
-            width: 35%;
+            width: 100%;
+            flex-direction: row;
+        }
+        hr{
+            width: 100%;
+            height: 4px;
         }
         .tab-content{
-            width: 60%;
+            width: 100%;
+            a{
+                margin:$space-md auto;
+            }
         }
+        
 
         .risk{
             width: 40%;
@@ -700,6 +738,10 @@ img{
     h2,p,a{
         margin-bottom: $space-sm;
     }
+
+    p{
+        width: 90%;
+    }
     img{
         margin-top: $space-sm*2;
     }
@@ -722,7 +764,7 @@ img{
 
     @media (min-width:576px) and (max-width:768px) {
         flex-direction: column;
-        padding: $space-md*2 $space-md;
+        padding: $space-md*4 $space-md;
         text-align: center;
         .contact-inner{
             width: 100%;
@@ -789,6 +831,7 @@ img{
         background-size: contain;
         text-align: left;
         padding: $space-lg*2 $space-lg;
+        margin-bottom: $space-lg*2;
 
         .reachout-inner{
             padding: $space-lg;
@@ -807,8 +850,11 @@ img{
             h2,p,a{
                 margin: 0;
             }
+            h2{
+                margin-bottom: $space-sm;
+            }
             a{
-                width: fit-content;
+                @include hydra();
             }
         }
 
@@ -858,9 +904,13 @@ img{
     button{
         @include myBtn($color-blue);
         position:absolute;
+        transition: $speed ease-in;
         bottom: 0;
         z-index: 3;
         left: 29%;
+        &.view{
+            bottom:3%
+        }
     }
     .context{
         margin-top: $space-sm;
@@ -874,8 +924,9 @@ img{
             width: 100%;
             height: 30vh;
             object-fit: cover;
-            border-radius: 5%;
+            border-radius: 5px;
         }
+        
 
         &.mid-pic{
             img{
@@ -904,7 +955,7 @@ img{
 
     .overlay{
         position: absolute;
-        border-radius: 5%;
+        border-radius: 5px;
         top: 0;
         left: 0;
         width: 100%;
@@ -935,6 +986,8 @@ img{
 
 
     @media (min-width:576px) {
+
+        padding: 0;
         .mee{
             margin-bottom: $space-lg/2;
         }
@@ -947,27 +1000,28 @@ img{
 
 
             .overlay{
-                padding-bottom: $space-lg
+                padding-bottom: $space-lg;
             }
 
             &.first{
-
+                top: $ham-sm/2;
                 img{
                     &:nth-child(1){
-                        height: 20%;
+                        height: 35%;
                     }
                     &:nth-child(2){
-                        height: 50%;
+                        height: 55%;
                     }
                 }
             }
 
             &.mid-pic{
-                top: $space-sm;
-                // height: 100%;
+                // top: $space-sm;
+                height: 90%;
             }
 
             &.last{
+                top: $ham-sm/2;
                 height: 85%;
                 img{
                     height: 100%;
@@ -982,31 +1036,54 @@ img{
 
 
     @media (min-width:576px) and (max-width:768px) {
+        padding: $space-md*2 $space-md;
         .context{
             display: flex;
             justify-content: space-between;
             // padding: $space-md 0;
             height: 70vh;
             top: 0;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
 
             &.first{
-                justify-content: space-evenly;
-                height: 100%;
+                justify-content: space-between;
+                height: auto;
                 img{
-                    width: 45%;
+                    margin: 0;
+                    width: 48%;
                     &:nth-child(1){
-                        height: 100%;
+                        height: 50%;
                     }
                     &:nth-child(2){
-                        height: 100%;
+                        height: 50%;
                     }
                 }
             }
+
+
+            &.mid-pic{
+                top: 0;
+            }
             
             &.last{
-                height: 36vh;
-                width: 50%;
-                margin: $space-md auto 0;
+                height: 100%;
+                width: 100%;
+                margin:$space-sm 0;
+                img{
+                    width: 50%;
+                }
+            }
+        }
+
+        button{
+            display: block;
+            left: 40%;
+            bottom: 0;
+            &.view{
+                left: 70%;
+                bottom:10%
             }
         }
 
@@ -1031,7 +1108,7 @@ img{
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: $space-sm;
+    padding: $space-sm*3 $space-sm;
     overflow: hidden;
     h3,p{
         color: $color-white;
@@ -1139,16 +1216,19 @@ img{
         }
 
         .docker{
-            border-radius: 5px;
-            width: 30%;
+            border-radius: 4px;
+            width: 45%;
             text-align: center;
             border: 1px solid $color-white;
-            outline: $color-blue solid 20px;
+            box-shadow: 0 0 0 $space-sm $color-blue;
+            // outline: $color-blue solid 20px;
+            // box-shadow: 0 0 3px $color-blue;
             transform: scale(.85);
 
             &.right-dock{
                 background-color: $color-green;
-                outline-color: $color-green;
+                // outline-color: $color-green;
+                box-shadow: 0 0 0 $space-sm $color-green;
             }
         }
     }
@@ -1236,6 +1316,7 @@ img{
         }
         button{
             @include myBtn($color-blue);
+            
         }
     }
     ul{
@@ -1289,7 +1370,7 @@ img{
        
 
         .my-form{
-            width: 65%;
+            width: 70%;
             margin: auto;
             flex-direction: row;
             // justify-content: space-between;
@@ -1319,6 +1400,7 @@ img{
 
     @media (min-width:576px) and (max-width:768px) {
         // padding-bottom: $space-lg*2;
+        padding: $space-md*2 $space-md;
         .my-form{
             width: 100%;
             button{
@@ -1326,6 +1408,22 @@ img{
             }
             input{
                 text-align:center;
+            }
+        }
+
+        .my-img{
+            width: 13%;
+
+            &.top-left{
+                top: 10%;
+        
+            }
+            &.top-right{
+                top: 10%;
+                
+            }
+            &.btm-left{
+                bottom: 10%;
             }
         }
         

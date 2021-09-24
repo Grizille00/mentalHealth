@@ -53,6 +53,8 @@ $ document
                                 slidesToShow: 1,
                                 centerPadding: '20px',
                                 centerMode:true,
+                                autoplay:true,
+                                autoplaySpeed:3000,
                                 }
                             },
 
@@ -63,7 +65,7 @@ $ document
                 
 # Tabs
 defa = btns[0]
-btns[0].classList.add("active-btn")
+defa.classList.add("active-btn")
 tabs[0].classList.add('active-tab')
 
 clip = (x)->
@@ -103,7 +105,8 @@ main_pic.classList.add 'gal-show'
 
 
 btn.addEventListener 'click',->
-    hydra i for i in pics if  body.offsetWidth < 576 
+    hydra i for i in pics if  body.offsetWidth < 780
+    btn.classList.toggle('view')
     if btn_ctx.mode
         btn.textContent = btn_ctx.close
         btn_ctx.mode=false
